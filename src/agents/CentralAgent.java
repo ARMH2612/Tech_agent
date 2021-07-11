@@ -26,6 +26,9 @@ public class CentralAgent extends Agent {
 
                    try{
                        Main.AIRAL.putO2AObject(info, AgentController.ASYNC);
+                       Main.AIRFR.putO2AObject(info, AgentController.ASYNC);
+                       Main.AIRTU.putO2AObject(info,AgentController.ASYNC);
+                       Main.LUFTDU.putO2AObject(info,AgentController.ASYNC);
                    }catch(Exception e){
                        e.printStackTrace();
                        System.out.println("L'envois a echoué!");

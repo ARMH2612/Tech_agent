@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.ValidateFlight">
+   <children>
+      <Label layoutX="34.0" layoutY="30.0" text="Flight validation">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Text layoutX="34.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of tickets :" wrappingWidth="127.13671875" />
+      <TextField fx:id="ticketNum" layoutX="34.0" layoutY="110.0" promptText="Eg 1 ..." />
+      <Text layoutX="234.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Children under 7" wrappingWidth="165.13671875" />
+      <TextField fx:id="childNum" layoutX="233.0" layoutY="110.0" text="0" />
+      <Button layoutX="422.0" layoutY="110.0" mnemonicParsing="false" onAction="#validateClick" prefHeight="25.0" prefWidth="87.0" text="Validate" />
+      <Label layoutX="34.0" layoutY="177.0" text="Billing details">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Separator layoutX="21.0" layoutY="153.0" prefHeight="0.0" prefWidth="556.0" />
+      <Text fx:id="priceLabel" layoutX="34.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket price : ......" />
+      <Text fx:id="ticketNumLabel" layoutX="34.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of tickets : ......" />
+      <Text fx:id="childNumLabel" layoutX="34.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of children under 7 : ......" />
+      <Text fx:id="discountLabel" layoutX="34.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discount : " />
+      <Text fx:id="totalLabel" layoutX="34.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total : " />
+      <Button layoutX="422.0" layoutY="341.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="25.0" prefWidth="85.0" text="Add to cart" />
+   </children>
+</AnchorPane>

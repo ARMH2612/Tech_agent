@@ -10,23 +10,23 @@ import java.io.File;
 import java.net.URL;
 import java.util.*;
 
-public class AirAlgAgent extends Agent {
+public class AirTuAgent extends Agent {
 
     HashMap<String,String> flightPrice = new HashMap<>();
 
     RuleInferenceEngine rie = new KieRuleInferenceEngine();
     @Override
     protected void setup(){
-        flightPrice.put("F-ALG001","8509695");
-        flightPrice.put("F-ALG002","2084526");
-        flightPrice.put("F-ALG003","6963413");
-        flightPrice.put("F-ALG004","6279480");
-        flightPrice.put("F-ALG005","907701");
-        flightPrice.put("F-ALG006","7878303");
-        flightPrice.put("F-ALG007","891252");
-        flightPrice.put("F-ALG008","6680298");
-        flightPrice.put("F-ALG009","9857996");
-        flightPrice.put("F-ALG010","5900812");
+        flightPrice.put("F-TU001","8509695");
+        flightPrice.put("F-TU002","2084526");
+        flightPrice.put("F-TU003","6963413");
+        flightPrice.put("F-TU004","6279480");
+        flightPrice.put("F-TU005","907701");
+        flightPrice.put("F-TU006","7878303");
+        flightPrice.put("F-TU007","891252");
+        flightPrice.put("F-TU008","6680298");
+        flightPrice.put("F-TU009","9857996");
+        flightPrice.put("F-TU010","5900812");
         setEnabledO2ACommunication(true,0);
 
         addBehaviour(new CyclicBehaviour(this) {
@@ -34,7 +34,7 @@ public class AirAlgAgent extends Agent {
             public void action() {
                 String info = (String) myAgent.getO2AObject();
                 if(info != null){
-                    System.out.println(" Air Algérie a reçu le formulaire.");
+                    System.out.println(" Air Turquie a reçu le formulaire.");
                     try{
                         getInferenceEngine();
                     }catch(Exception e){
@@ -42,7 +42,7 @@ public class AirAlgAgent extends Agent {
                     }
                     String t[] = info.split(" ");
                     String from = t[0],to = t[1],mprix = t[2],dateDep = t[3],dateRet=t[4],chain=t[5];
-                    System.out.println("Agent Air Algerie : ");
+                    System.out.println("Agent Air Turquie : ");
                     System.out.println(from+"\n"+to+"\n"+dateDep+"\n"+dateRet+"\n"+chain);
 
                     if(!from.equals("")){
@@ -79,18 +79,18 @@ public class AirAlgAgent extends Agent {
 //                            }
 
                             for (int i = 0; i< rie.getFacts().size();i++){
-                               if (tab[i].contains("Flight")){
-                                   sb.append(tab[i].substring(9)+" - "+ "Air Alg"+" - "+flightPrice.get(tab[i].substring(9).trim())+"\n");
-                                   count ++;
-                               }
+                                if (tab[i].contains("Flight")){
+                                    sb.append(tab[i].substring(9)+" - "+ "Air TU"+" - "+flightPrice.get(tab[i].substring(9).trim())+"\n");
+                                    count ++;
+                                }
                             }
                             if (count>0){
-                                HomeClient.listAirAlg = new String(sb);
+                                HomeClient.listAirTr = new String(sb);
                             }
                             rie.clearFacts();
 
                         }else{
-                            HomeClient.ruleBase = "Agent AirAlgerie\n"+rie.getRules().toString()+"\n"+rie.getFacts().toString();
+                            HomeClient.ruleBase = "Agent AirTurquie\n"+rie.getRules().toString()+"\n"+rie.getFacts().toString();
                             HomeClient.available = null;
                         }
                     }
@@ -123,16 +123,16 @@ public class AirAlgAgent extends Agent {
         rie = new KieRuleInferenceEngine();
 
         rule = new Rule("disp1");
-        rule.addAntecedent(new EqualsClause("Flight","F-ALG001"));
+        rule.addAntecedent(new EqualsClause("Flight","F-TU001"));
         rule.setConsequent(new EqualsClause("Available","true"));
         rie.addRule(rule);
 
 
-        rule = new Rule("F-ALG001");
+        rule = new Rule("F-TU001");
         rule.addAntecedent(new EqualsClause("From","Algeria"));
         rule.addAntecedent(new EqualsClause("To","England"));
         rule.addAntecedent(new GEClause("Price","7000000"));
-        rule.setConsequent(new EqualsClause("Flight","F-ALG001"));
+        rule.setConsequent(new EqualsClause("Flight","F-TU001"));
         rie.addRule(rule);
 
 
